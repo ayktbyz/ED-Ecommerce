@@ -1,4 +1,4 @@
-package com.aytbyz.enuygun.presentation.home
+package com.aytbyz.enuygun.presentation.favorite
 
 import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
@@ -10,7 +10,7 @@ import androidx.compose.ui.unit.sp
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun FavoriteListScreen() {
     Scaffold { paddingValues ->
         Box(
             modifier = Modifier
@@ -19,7 +19,7 @@ fun HomeScreen() {
             contentAlignment = Alignment.Center
         ) {
             Text(
-                text = "Hoş geldiniz!",
+                text = "Favoriler",
                 fontSize = 24.sp,
                 fontWeight = FontWeight.Bold
             )
