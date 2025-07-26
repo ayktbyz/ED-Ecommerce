@@ -2,6 +2,8 @@
     <string name="app_name">ENUYGUN</string>
 
     <string name="nav_home">Anasayfa</string>
+    <string name="nav_categories">Kategoriler</string>
     <string name="nav_favorite">Favoriler</string>
     <string name="nav_basket">Sepetim</string>
+    <string name="nav_profile">Profil</string>
 </resources>

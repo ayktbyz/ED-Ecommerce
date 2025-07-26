@@ -12,7 +12,9 @@ import com.aytbyz.enuygun.presentation.home.HomeScreen
 fun ENNavigationHost(navController: NavHostController) {
     NavHost(navController = navController, startDestination = ENBottomNavItem.Home.route) {
         composable(ENBottomNavItem.Home.route) { HomeScreen() }
+        composable(ENBottomNavItem.Categories.route) { FavoriteListScreen() }
         composable(ENBottomNavItem.Favorite.route) { FavoriteListScreen() }
         composable(ENBottomNavItem.Basket.route) { BasketScreen() }
+        composable(ENBottomNavItem.Profile.route) { BasketScreen() }
     }
 }
