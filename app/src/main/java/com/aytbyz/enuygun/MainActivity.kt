@@ -18,7 +18,9 @@ import com.aytbyz.enuygun.ui.navbar.ENNavigationHost
 
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
+        setTheme(R.style.Theme_Enuygun)
         super.onCreate(savedInstanceState)
+
         setContent {
             EnuygunTheme {
                 ENApp()

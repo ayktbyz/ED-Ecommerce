@@ -3,7 +3,7 @@
     <string name="app_name">ENUYGUN</string>
 
     <string name="nav_home">Home</string>
-    <string name="nav_categories">Kategoriler</string>
+    <string name="nav_categories">Categories</string>
     <string name="nav_favorite">Favorites</string>
     <string name="nav_basket">Basket</string>
     <string name="nav_profile">Profile</string>

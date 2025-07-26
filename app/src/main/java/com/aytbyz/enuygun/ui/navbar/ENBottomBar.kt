@@ -13,7 +13,6 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.res.stringResource
-import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import com.aytbyz.enuygun.ui.theme.Gray50
 import com.aytbyz.enuygun.ui.theme.SelectedIconColor
@@ -50,9 +49,9 @@ fun EnuygunBottomBar(
             val iconTint = if (isSelected) SelectedIconColor else UnselectedIconColor
             val textColor = if (isSelected) SelectedTextColor else UnselectedTextColor
             val textStyle = if (isSelected)
-                MaterialTheme.typography.labelMedium.copy(fontWeight = FontWeight.Bold)
+                MaterialTheme.typography.titleMedium
             else
-                MaterialTheme.typography.labelMedium
+                MaterialTheme.typography.titleMedium
             val iconRes = if (isSelected) item.selectedIcon else item.icon
 
             NavigationBarItem(

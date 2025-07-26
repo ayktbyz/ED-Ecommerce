@@ -1,4 +1,5 @@
-<resources xmlns:tools="http://schemas.android.com/tools">
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
     <style name="Theme.Enuygun" parent="Theme.MaterialComponents.DayNight.NoActionBar">
         <item name="colorPrimary">@color/purple_500</item>
         <item name="colorPrimaryVariant">@color/purple_700</item>
@@ -9,10 +10,4 @@
         <item name="android:statusBarColor">@android:color/white</item>
         <item name="android:windowOptOutEdgeToEdgeEnforcement">true</item>
     </style>
-
-    <style name="Theme.Enuygun.Splash" parent="Theme.SplashScreen">
-        <item name="windowSplashScreenBackground">@color/green</item>
-        <item name="windowSplashScreenAnimatedIcon">@mipmap/ic_launcher</item>
-    </style>
-
 </resources>

@@ -1,28 +1,30 @@
 package com.aytbyz.enuygun.presentation.home
 
-import androidx.compose.foundation.layout.*
-import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import com.aytbyz.enuygun.presentation.base.BaseScreen
+import com.aytbyz.enuygun.presentation.base.topbar.ENTopBarConfig
+import com.aytbyz.enuygun.presentation.components.topbar.SearchFilterSortTopBar
 
-@OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun HomeScreen() {
-    Scaffold { paddingValues ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = "Hoş geldiniz!",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            )
-        }
+    val searchQuery = remember { mutableStateOf("") }
+
+    BaseScreen(
+        topBarConfig = ENTopBarConfig(
+            showBackButton = false,
+            customTopBar = {
+                SearchFilterSortTopBar(
+                    searchQuery = searchQuery.value,
+                    onSearchChange = { searchQuery.value = it },
+                    onFilterClick = {},
+                    onSortClick = {}
+                )
+            },
+            onBackClick = {}
+        )
+    ) {
+
     }
 }

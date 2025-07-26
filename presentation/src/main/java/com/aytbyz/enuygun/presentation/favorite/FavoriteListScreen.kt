@@ -1,28 +1,22 @@
 package com.aytbyz.enuygun.presentation.favorite
 
-import androidx.compose.foundation.layout.*
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
-import androidx.compose.ui.Alignment
-import androidx.compose.ui.Modifier
-import androidx.compose.ui.text.font.FontWeight
-import androidx.compose.ui.unit.sp
+import androidx.compose.ui.res.stringResource
+import com.aytbyz.enuygun.presentation.R
+import com.aytbyz.enuygun.presentation.base.BaseScreen
+import com.aytbyz.enuygun.presentation.base.topbar.ENTopBarConfig
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 fun FavoriteListScreen() {
-    Scaffold { paddingValues ->
-        Box(
-            modifier = Modifier
-                .fillMaxSize()
-                .padding(paddingValues),
-            contentAlignment = Alignment.Center
-        ) {
-            Text(
-                text = "Favoriler",
-                fontSize = 24.sp,
-                fontWeight = FontWeight.Bold
-            )
-        }
+    BaseScreen(
+        topBarConfig = ENTopBarConfig(
+            title = stringResource(id = R.string.title_favorites),
+            showBackButton = false,
+            onBackClick = {}
+        )
+    ) {
+
     }
 }
