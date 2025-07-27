@@ -15,7 +15,9 @@ import androidx.compose.runtime.getValue
 import com.aytbyz.enuygun.ui.navbar.EnuygunBottomBar
 import com.aytbyz.enuygun.ui.navbar.ENBottomNavItem
 import com.aytbyz.enuygun.ui.navbar.ENNavigationHost
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         setTheme(R.style.Theme_Enuygun)

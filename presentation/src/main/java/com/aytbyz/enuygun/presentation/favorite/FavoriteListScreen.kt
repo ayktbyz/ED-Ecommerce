@@ -12,7 +12,7 @@ import com.aytbyz.enuygun.presentation.base.topbar.ENTopBarConfig
 fun FavoriteListScreen() {
     BaseScreen(
         topBarConfig = ENTopBarConfig(
-            title = stringResource(id = R.string.title_favorites),
+            title = "title",
             showBackButton = false,
             onBackClick = {}
         )

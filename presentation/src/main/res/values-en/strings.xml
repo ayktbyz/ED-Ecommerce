@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-    <string name="title_profile">Profile</string>
-    <string name="title_favorites">Favorites</string>
-    <string name="title_basket">Basket</string>
-    <string name="title_categories">Categories</string>
-    <string name="search_placeholder">Search...</string>
-    <string name="search_products_placeholder">Search products...</string>
-</resources>

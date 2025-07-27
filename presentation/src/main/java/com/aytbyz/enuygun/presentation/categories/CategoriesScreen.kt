@@ -8,7 +8,7 @@ import com.aytbyz.enuygun.presentation.base.topbar.ENTopBarConfig
 fun CategoriesScreen() {
     BaseScreen(
         topBarConfig = ENTopBarConfig(
-            title = "Categories",
+            title = "",
             showBackButton = true,
             onBackClick = {}
         )

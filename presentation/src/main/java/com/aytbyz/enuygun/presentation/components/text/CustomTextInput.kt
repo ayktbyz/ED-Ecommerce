@@ -10,17 +10,15 @@ import androidx.compose.runtime.*
 import androidx.compose.ui.*
 import androidx.compose.ui.draw.shadow
 import androidx.compose.ui.graphics.Color
-import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.TextStyle
 import androidx.compose.ui.unit.*
-import com.aytbyz.enuygun.presentation.R
 
 @Composable
 fun CustomTextInput(
     value: String,
     onValueChange: (String) -> Unit,
     modifier: Modifier = Modifier,
-    placeholder: String = stringResource(id = R.string.search_placeholder),
+    placeholder: String = "",
     textStyle: TextStyle = TextStyle(fontSize = 12.sp),
     backgroundColor: Color = Color.White,
     placeholderColor: Color = Color.Gray,
