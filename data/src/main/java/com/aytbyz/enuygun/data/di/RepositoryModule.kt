@@ -1,4 +1,4 @@
-package com.aytbyz.enuygun.di
+package com.aytbyz.enuygun.data.di
 
 import com.aytbyz.enuygun.data.api.ProductApi
 import com.aytbyz.enuygun.data.repository.ProductRepositoryImpl

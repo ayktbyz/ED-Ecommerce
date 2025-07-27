@@ -25,9 +25,3 @@ include(":app")
 include(":data")
 include(":domain")
 include(":presentation")
-
-include(":core:network")
-project(":core:network").projectDir = file("core/network")
-
-include(":core:database")
-project(":core:database").projectDir = file("core/database")

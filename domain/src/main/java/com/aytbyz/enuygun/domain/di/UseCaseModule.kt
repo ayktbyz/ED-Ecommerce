@@ -1,4 +1,4 @@
-package com.aytbyz.enuygun.di
+package com.aytbyz.enuygun.domain.di
 
 import com.aytbyz.enuygun.domain.repository.ProductRepository
 import com.aytbyz.enuygun.domain.usecase.GetAllProductsUseCase
