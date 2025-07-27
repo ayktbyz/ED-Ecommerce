@@ -14,6 +14,8 @@ hilt = "2.50"
 hiltNavigationCompose = "1.2.0"
 retrofit = "2.9.0"
 coroutines = "1.7.3"
+coil = "2.5.0"
+compose = "1.6.0"
 
 [libraries]
 androidx-core-ktx = { group = "androidx.core", name = "core-ktx", version.ref = "coreKtx" }
@@ -33,6 +35,8 @@ androidx-material3 = { group = "androidx.compose.material3", name = "material3" 
 material = { group = "com.google.android.material", name = "material", version.ref = "material" }
 androidx-core-splashscreen = { group = "androidx.core", name = "core-splashscreen", version = "1.0.0" }
 androidx-navigation-compose = { group = "androidx.navigation", name = "navigation-compose", version.ref = "navigation" }
+coil-compose = { module = "io.coil-kt:coil-compose", version.ref = "coil" }
+androidx-compose-foundation = { module = "androidx.compose.foundation:foundation", version.ref = "compose" }
 
 hilt-android = { group = "com.google.dagger", name = "hilt-android", version.ref = "hilt" }
 hilt-compiler = { group = "com.google.dagger", name = "hilt-compiler", version.ref = "hilt" }

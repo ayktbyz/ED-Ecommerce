@@ -49,9 +49,9 @@ fun EnuygunBottomBar(
             val iconTint = if (isSelected) SelectedIconColor else UnselectedIconColor
             val textColor = if (isSelected) SelectedTextColor else UnselectedTextColor
             val textStyle = if (isSelected)
-                MaterialTheme.typography.titleMedium
+                MaterialTheme.typography.titleSmall
             else
-                MaterialTheme.typography.titleMedium
+                MaterialTheme.typography.titleSmall
             val iconRes = if (isSelected) item.selectedIcon else item.icon
 
             NavigationBarItem(
@@ -64,7 +64,9 @@ fun EnuygunBottomBar(
                             contentDescription = stringResource(id = item.label),
                             tint = iconTint
                         )
+
                         Spacer(modifier = Modifier.height(2.dp))
+
                         Text(
                             text = stringResource(id = item.label),
                             color = textColor,

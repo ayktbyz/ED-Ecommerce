@@ -7,15 +7,15 @@ import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.res.painterResource
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
 import com.aytbyz.enuygun.presentation.R
 import com.aytbyz.enuygun.presentation.components.text.CustomTextInput
 
 @Composable
 fun SearchFilterSortTopBar(
-    searchQuery: String,
+    searchQuery: String? = null,
     onSearchChange: (String) -> Unit,
-    onFilterClick: () -> Unit,
     onSortClick: () -> Unit
 ) {
     Surface(
@@ -30,9 +30,9 @@ fun SearchFilterSortTopBar(
             verticalAlignment = Alignment.CenterVertically
         ) {
             CustomTextInput(
-                value = searchQuery,
+                value = searchQuery ?: "",
                 onValueChange = onSearchChange,
-                placeholder =  "",
+                placeholder = stringResource(R.string.placeholder_search),
                 modifier = Modifier
                     .weight(1f)
                     .height(42.dp),
@@ -45,18 +45,8 @@ fun SearchFilterSortTopBar(
                 verticalAlignment = Alignment.CenterVertically
             ) {
                 IconButton(
-                    onClick = onFilterClick,
-                    modifier = Modifier.size(36.dp)
-                ) {
-                    Icon(
-                        painter = painterResource(id = R.drawable.ic_filter),
-                        contentDescription = "filter"
-                    )
-                }
-
-                IconButton(
                     onClick = onSortClick,
-                    modifier = Modifier.size(36.dp)
+                    modifier = Modifier.size(28.dp)
                 ) {
                     Icon(
                         painter = painterResource(id = R.drawable.ic_sort),

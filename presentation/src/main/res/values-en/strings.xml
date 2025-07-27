@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="placeholder_search">Search products</string>
+
+    <string name="filter">Filter</string>
+    <string name="price_low_to_high">Price (Low to High)</string>
+    <string name="price_high_to_low">Price (High to Low)</string>
+    <string name="a_to_z">A–Z</string>
+    <string name="z_to_a">Z–A</string>
+    <string name="apply">Apply</string>
+</resources>

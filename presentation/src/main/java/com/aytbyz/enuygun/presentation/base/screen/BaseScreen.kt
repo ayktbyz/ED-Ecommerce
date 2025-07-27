@@ -1,4 +1,4 @@
-package com.aytbyz.enuygun.presentation.base
+package com.aytbyz.enuygun.presentation.base.screen
 
 import androidx.compose.foundation.layout.Box
 import androidx.compose.foundation.layout.padding

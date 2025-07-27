@@ -1,7 +1,7 @@
 package com.aytbyz.enuygun.domain.di
 
 import com.aytbyz.enuygun.domain.repository.ProductRepository
-import com.aytbyz.enuygun.domain.usecase.GetAllProductsUseCase
+import com.aytbyz.enuygun.domain.usecase.GetProductsUseCase
 import dagger.Module
 import dagger.Provides
 import dagger.hilt.InstallIn
@@ -12,9 +12,9 @@ import dagger.hilt.components.SingletonComponent
 object UseCaseModule {
 
     @Provides
-    fun provideGetAllProductsUseCase(
+    fun provideGetProductsUseCase(
         repository: ProductRepository
-    ): GetAllProductsUseCase {
-        return GetAllProductsUseCase(repository)
+    ): GetProductsUseCase {
+        return GetProductsUseCase(repository)
     }
 }

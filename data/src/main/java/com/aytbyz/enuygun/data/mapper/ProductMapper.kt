@@ -9,6 +9,7 @@ fun ProductDto.toDomain(): Product {
         title = title,
         description = description,
         category = category,
+        thumbnail = thumbnail,
         price = price,
         discountPercentage = discountPercentage
     )
