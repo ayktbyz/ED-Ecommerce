@@ -91,8 +91,9 @@ class ProductDetailViewModel @Inject constructor(
                 )
 
                 //Local DB Add
-                _state.value.product?.let {
-                    addToCartLocal(product = it)
+                state.value.product?.let { product ->
+                    val updatedProduct = product.copy(quantity = state.value.quantity)
+                    addToCartLocal(product = updatedProduct)
                 }
 
                 _state.update {

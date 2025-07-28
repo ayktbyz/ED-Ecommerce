@@ -19,13 +19,13 @@ fun ProductDto.toDomain(): Product {
     )
 }
 
-fun Product.toEntity(quantity: Int = 1): CartProductEntity {
+fun Product.toEntity(): CartProductEntity {
     return CartProductEntity(
         id = this.id,
         title = this.title,
         price = this.price,
         thumbnail = this.thumbnail,
-        quantity = quantity,
+        quantity = this.quantity,
         discountPercentage = this.discountPercentage
     )
 }
