@@ -6,5 +6,6 @@ data class ENTopBarConfig(
     val title: String? = null,
     val showBackButton: Boolean = false,
     val onBackClick: (() -> Unit)? = null,
-    val customTopBar: (@Composable (() -> Unit))? = null
+    val customTopBar: (@Composable (() -> Unit))? = null,
+    val isVisible: Boolean = true
 )

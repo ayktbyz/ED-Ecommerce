@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="placeholder_search">Search products</string>
+    <string name="categories">Categories</string>
 
     <string name="filter">Filter</string>
     <string name="price_low_to_high">Price (Low to High)</string>
@@ -8,4 +9,9 @@
     <string name="a_to_z">A–Z</string>
     <string name="z_to_a">Z–A</string>
     <string name="apply">Apply</string>
+
+    <string name="quantity">Quantity</string>
+    <string name="add_to_cart">Add To Cart</string>
+    <string name="price_unit">TL</string>
+    <string name="added_to_cart">Product added to cart</string>
 </resources>

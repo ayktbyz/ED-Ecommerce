@@ -1,7 +1,9 @@
 package com.aytbyz.enuygun.data.api
 
+import com.aytbyz.enuygun.data.dto.ProductDto
 import com.aytbyz.enuygun.data.dto.ProductResponseDto
 import retrofit2.http.GET
+import retrofit2.http.Path
 import retrofit2.http.Query
 
 interface ProductApi {
@@ -17,4 +19,7 @@ interface ProductApi {
         @Query("sortBy") sortBy: String? = null,
         @Query("order") order: String? = null
     ): ProductResponseDto
+
+    @GET("products/{id}")
+    suspend fun getProductDetail(@Path("id") id: Int): ProductDto
 }

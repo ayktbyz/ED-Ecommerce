@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="placeholder_search">Ürün Ara</string>
+    <string name="categories">Kategoriler</string>
 
     <string name="filter">Filtrele</string>
     <string name="price_low_to_high">Fiyat (Artan)</string>
@@ -8,4 +9,10 @@
     <string name="a_to_z">A–Z</string>
     <string name="z_to_a">Z–A</string>
     <string name="apply">Uygula</string>
+
+    <string name="quantity">Adet</string>
+    <string name="add_to_cart">Sepete Ekle</string>
+    <string name="price_unit">TL</string>
+
+    <string name="added_to_cart">Sepete ürün eklendi</string>
 </resources>

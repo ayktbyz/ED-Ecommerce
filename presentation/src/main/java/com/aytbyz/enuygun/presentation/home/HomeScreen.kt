@@ -16,12 +16,12 @@ import com.aytbyz.enuygun.presentation.components.product.ProductCard
 import com.aytbyz.enuygun.presentation.components.topbar.SearchFilterSortTopBar
 import androidx.compose.foundation.lazy.grid.items
 import androidx.compose.ui.graphics.Color
-import com.aytbyz.enuygun.presentation.base.screen.model.UiLoadingState
 import com.aytbyz.enuygun.presentation.components.bottomsheet.ProductFilterBottomSheet
 import com.aytbyz.enuygun.presentation.home.intent.HomeIntent
 
 @Composable
 fun HomeScreen(
+    goToProductDetail: (Int) -> Unit,
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val uiState = viewModel.uiState.collectAsState().value
@@ -66,6 +66,9 @@ fun HomeScreen(
                     isFavorite = viewModel.isFavorite,
                     onFavoriteClick = {
                         viewModel.toggleFavorite()
+                    },
+                    onClick = {
+                        goToProductDetail(product.id)
                     }
                 )
             }

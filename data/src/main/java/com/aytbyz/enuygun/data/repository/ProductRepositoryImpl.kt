@@ -2,7 +2,7 @@ package com.aytbyz.enuygun.data.repository
 
 import com.aytbyz.enuygun.data.api.ProductApi
 import com.aytbyz.enuygun.data.mapper.toDomain
-import com.aytbyz.enuygun.domain.model.Product
+import com.aytbyz.enuygun.domain.model.response.Product
 import com.aytbyz.enuygun.domain.repository.ProductRepository
 import kotlinx.coroutines.CoroutineDispatcher
 import kotlinx.coroutines.Dispatchers
@@ -39,4 +39,9 @@ class ProductRepositoryImpl @Inject constructor(
             emit(emptyList())
         }
     }.flowOn(dispatcher)
+
+    override fun getProductDetail(productId: Int): Flow<Product> = flow {
+        val response = api.getProductDetail(productId)
+        emit(response.toDomain())
+    }
 }

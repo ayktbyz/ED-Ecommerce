@@ -1,7 +1,7 @@
 package com.aytbyz.enuygun.data.mapper
 
 import com.aytbyz.enuygun.data.dto.ProductDto
-import com.aytbyz.enuygun.domain.model.Product
+import com.aytbyz.enuygun.domain.model.response.Product
 
 fun ProductDto.toDomain(): Product {
     return Product(
@@ -11,6 +11,8 @@ fun ProductDto.toDomain(): Product {
         category = category,
         thumbnail = thumbnail,
         price = price,
+        images = images,
+        rating = rating,
         discountPercentage = discountPercentage
     )
 }

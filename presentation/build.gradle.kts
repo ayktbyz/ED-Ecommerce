@@ -55,6 +55,8 @@ dependencies {
     implementation(libs.androidx.material3)
     implementation(libs.coil.compose)
     implementation(libs.androidx.compose.foundation)
+    implementation(libs.androidx.foundation)
+    implementation(libs.androidx.foundation.pager)
 
     implementation(libs.hilt.android)
     implementation(libs.androidx.hilt.navigation.compose)

@@ -24,10 +24,13 @@ import androidx.compose.ui.text.style.TextDecoration
 import androidx.compose.ui.text.style.TextOverflow
 import androidx.compose.ui.unit.dp
 import coil.compose.AsyncImage
-import com.aytbyz.enuygun.domain.model.Product
+import com.aytbyz.enuygun.domain.model.response.Product
 import com.aytbyz.enuygun.presentation.components.favorite.FavoriteIcon
 import com.aytbyz.enuygun.presentation.theme.Gray100
 import com.aytbyz.enuygun.presentation.theme.Gray50
+import androidx.compose.foundation.clickable
+import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.runtime.remember
 
 @Composable
 fun ProductCard(
@@ -35,11 +38,17 @@ fun ProductCard(
     modifier: Modifier = Modifier,
     isFavorite: Boolean = false,
     onFavoriteClick: () -> Unit = {},
+    onClick: () -> Unit = {}
 ) {
     Card(
         modifier = modifier
             .padding(8.dp)
-            .width(200.dp),
+            .width(200.dp)
+            .clickable(
+                interactionSource = remember { MutableInteractionSource() },
+                indication = null,
+                onClick = onClick
+            ),
         shape = RoundedCornerShape(16.dp),
         elevation = CardDefaults.cardElevation(defaultElevation = 4.dp),
         colors = CardDefaults.cardColors(
@@ -86,7 +95,7 @@ fun ProductCard(
 
             Column {
                 Text(
-                    text = "${product.price} TL",
+                    text = "${product.discountPercentage} TL",
                     style = MaterialTheme.typography.bodyLarge,
                     color = Color.Black,
                     fontWeight = FontWeight.Bold
