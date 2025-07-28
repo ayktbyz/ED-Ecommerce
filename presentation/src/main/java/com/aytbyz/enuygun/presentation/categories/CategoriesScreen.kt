@@ -27,7 +27,7 @@ fun CategoriesScreen(
     BaseScreen(
         topBarConfig = ENTopBarConfig(
             title = stringResource(R.string.categories),
-            showBackButton = true,
+            showBackButton = false,
             onBackClick = {}
         )
     ) {
