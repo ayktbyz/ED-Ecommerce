@@ -13,5 +13,7 @@ data class Product(
     val price: Double,
     val images: List<String>,
     val rating: Float,
-    val discountPercentage: Double
+    val discountPercentage: Double,
+    val quantity: Int = 0,
+    val isFavorite: Boolean = false
 ) : Parcelable

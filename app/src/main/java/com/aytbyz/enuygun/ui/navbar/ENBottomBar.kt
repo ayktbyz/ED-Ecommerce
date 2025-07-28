@@ -29,8 +29,7 @@ fun EnuygunBottomBar(
         ENBottomNavItem.Home,
         ENBottomNavItem.Categories,
         ENBottomNavItem.Favorite,
-        ENBottomNavItem.Basket,
-        ENBottomNavItem.Profile
+        ENBottomNavItem.Basket
     )
 
     NavigationBar(

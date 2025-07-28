@@ -8,7 +8,7 @@ import com.aytbyz.enuygun.data.local.entity.FavoriteProductEntity
 
 @Database(
     entities = [FavoriteProductEntity::class, CartProductEntity::class],
-    version = 2,
+    version = 3,
     exportSchema = false
 )
 abstract class EnuygunDatabase : RoomDatabase() {

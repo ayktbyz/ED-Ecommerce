@@ -20,8 +20,7 @@ import androidx.compose.foundation.lazy.grid.items
 @Composable
 fun CategoriesScreen(
     viewModel: CategoriesViewModel = hiltViewModel(),
-    ) {
-
+) {
     val state = viewModel.state.collectAsState().value
 
     BaseScreen(
@@ -32,7 +31,7 @@ fun CategoriesScreen(
         )
     ) {
         LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
+            columns = GridCells.Fixed(4),
             modifier = Modifier
                 .padding(2.dp)
                 .fillMaxSize(),

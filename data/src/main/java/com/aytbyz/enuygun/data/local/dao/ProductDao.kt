@@ -24,6 +24,9 @@ interface ProductDao {
     suspend fun isFavorite(id: Int): Boolean
 
 
+    @Query("SELECT * FROM cart_products WHERE id = :productId LIMIT 1")
+    suspend fun getCartItemById(productId: Int): CartProductEntity?
+
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertCartItem(product: CartProductEntity)
 

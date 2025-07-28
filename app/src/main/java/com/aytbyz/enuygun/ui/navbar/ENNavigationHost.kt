@@ -6,12 +6,11 @@ import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
 import androidx.navigation.compose.composable
 import androidx.navigation.navArgument
-import com.aytbyz.enuygun.presentation.basket.BasketScreen
+import com.aytbyz.enuygun.presentation.cart.CartScreen
 import com.aytbyz.enuygun.presentation.categories.CategoriesScreen
 import com.aytbyz.enuygun.presentation.favorite.FavoriteListScreen
 import com.aytbyz.enuygun.presentation.home.HomeScreen
 import com.aytbyz.enuygun.presentation.product_detail.ProductDetailScreen
-import com.aytbyz.enuygun.presentation.profile.ProfileScreen
 
 @Composable
 fun ENNavigationHost(navController: NavHostController) {
@@ -30,10 +29,7 @@ fun ENNavigationHost(navController: NavHostController) {
             FavoriteListScreen()
         }
         composable(ENBottomNavItem.Basket.route) {
-            BasketScreen()
-        }
-        composable(ENBottomNavItem.Profile.route) {
-            ProfileScreen()
+            CartScreen()
         }
 
         composable(

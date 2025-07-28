@@ -25,7 +25,8 @@ fun Product.toEntity(quantity: Int = 1): CartProductEntity {
         title = this.title,
         price = this.price,
         thumbnail = this.thumbnail,
-        quantity = quantity
+        quantity = quantity,
+        discountPercentage = this.discountPercentage
     )
 }
 
@@ -39,7 +40,8 @@ fun CartProductEntity.toDomain(): Product {
         price = this.price,
         images = emptyList(),
         rating = 0f,
-        discountPercentage = 0.0
+        quantity = quantity,
+        discountPercentage = this.discountPercentage
     )
 }
 fun Product.toFavoriteEntity(): FavoriteProductEntity {
@@ -49,6 +51,7 @@ fun Product.toFavoriteEntity(): FavoriteProductEntity {
         description = this.description,
         thumbnail = this.thumbnail,
         price = this.price,
+        discountPercentage = this.discountPercentage
     )
 }
 
@@ -62,7 +65,7 @@ fun FavoriteProductEntity.toDomain(): Product {
         price = this.price,
         images = emptyList(),
         rating = 0f,
-        discountPercentage = 0.0
+        discountPercentage = this.discountPercentage
     )
 }
 
@@ -72,6 +75,7 @@ fun Product.toCartEntity(quantity: Int = 1): CartProductEntity {
         title = this.title,
         thumbnail = this.thumbnail,
         price = this.price,
-        quantity = quantity
+        quantity = quantity,
+        discountPercentage = discountPercentage
     )
 }

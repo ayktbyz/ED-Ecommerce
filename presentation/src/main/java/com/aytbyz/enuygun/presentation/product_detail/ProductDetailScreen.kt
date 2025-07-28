@@ -135,6 +135,7 @@ fun ProductDetailScreen(
                         "${state.product?.discountPercentage} ${stringResource(R.string.price_unit)}",
                         style = MaterialTheme.typography.headlineSmall
                     )
+
                     Text(
                         "${state.product?.price} ${stringResource(R.string.price_unit)}",
                         style = MaterialTheme.typography.bodyMedium.copy(
@@ -152,7 +153,9 @@ fun ProductDetailScreen(
                     stringResource(R.string.quantity),
                     style = MaterialTheme.typography.titleMedium
                 )
+
                 Spacer(Modifier.height(8.dp))
+
                 Row(
                     verticalAlignment = Alignment.CenterVertically
                 ) {

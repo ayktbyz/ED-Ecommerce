@@ -2,6 +2,10 @@
 <resources>
     <string name="placeholder_search">Ürün Ara</string>
     <string name="categories">Kategoriler</string>
+    <string name="favorites">Favoriler</string>
+    <string name="my_cart">Sepetim</string>
+    <string name="profile">Profilim</string>
+
 
     <string name="filter">Filtrele</string>
     <string name="price_low_to_high">Fiyat (Artan)</string>
@@ -15,4 +19,19 @@
     <string name="price_unit">TL</string>
 
     <string name="added_to_cart">Sepete ürün eklendi</string>
+    <string name="removed_from_favorites">Favorilerden çıkarıldı</string>
+    <string name="added_to_favorites">Favorilere eklendi</string>
+
+    <string name="empty_favorite_list">Favori listeniz boş.</string>
+    <string name="empty_cart_list">Sepet listeniz boş.</string>
+
+    <string name="checkout_with_count">Ödeme Yap (%1$d)</string>
+
+    <string name="summary_subtotal">Ara Toplam</string>
+    <string name="summary_shipping">Kargo</string>
+    <string name="summary_total">Toplam</string>
+    <string name="price_with_currency">%.2f TL</string>
+    <string name="shipping_free">0,00 TL</string>
+
+    <string name="product_count_label">Ürünler (Toplam %1$d adet)</string>
 </resources>

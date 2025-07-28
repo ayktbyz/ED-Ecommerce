@@ -14,7 +14,14 @@ class LocalRepositoryImpl @Inject constructor(
     private val dao: ProductDao
 ) : LocalRepository {
     override suspend fun addToCart(product: Product) {
-        dao.insertCartItem(product.toEntity())
+        val existingItem = dao.getCartItemById(product.id)
+
+        if (existingItem != null) {
+            val updatedItem = existingItem.copy(quantity = existingItem.quantity + 1)
+            dao.insertCartItem(updatedItem)
+        } else {
+            dao.insertCartItem(product.toEntity())
+        }
     }
 
     override fun getCartItems(): Flow<List<Product>> {

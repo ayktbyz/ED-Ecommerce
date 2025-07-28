@@ -2,6 +2,7 @@ package com.aytbyz.enuygun.data.repository
 
 import com.aytbyz.enuygun.data.api.ProductApi
 import com.aytbyz.enuygun.data.mapper.toDomain
+import com.aytbyz.enuygun.domain.model.ProductPage
 import com.aytbyz.enuygun.domain.model.response.Product
 import com.aytbyz.enuygun.domain.repository.ProductRepository
 import kotlinx.coroutines.CoroutineDispatcher
@@ -19,24 +20,38 @@ class ProductRepositoryImpl @Inject constructor(
     override fun getProducts(
         query: String?,
         sortBy: String?,
-        sortDirection: String?
-    ): Flow<List<Product>> = flow {
+        sortDirection: String?,
+        skip: Int,
+        limit: Int
+    ): Flow<ProductPage> = flow {
         try {
             val result = if (!query.isNullOrBlank()) {
                 api.searchProducts(
                     query = query,
                     sortBy = sortBy,
-                    order = sortDirection
+                    order = sortDirection,
+                    skip = skip,
+                    limit = limit
                 )
             } else {
                 api.getProducts(
                     sortBy = sortBy,
-                    order = sortDirection
+                    order = sortDirection,
+                    skip = skip,
+                    limit = limit
                 )
             }
-            emit(result.products.map { it.toDomain() })
+            emit(
+                ProductPage(
+                    products = result.products.map { it.toDomain() },
+                    total = result.total,
+                    skip = result.skip,
+                    limit = result.limit
+                )
+            )
+
         } catch (e: Exception) {
-            emit(emptyList())
+            emit(ProductPage(emptyList(), total = 0, skip = 0, limit = 30))
         }
     }.flowOn(dispatcher)
 

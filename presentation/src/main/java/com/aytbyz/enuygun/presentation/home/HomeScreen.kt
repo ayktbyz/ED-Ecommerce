@@ -1,7 +1,11 @@
 package com.aytbyz.enuygun.presentation.home
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.PaddingValues
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.lazy.grid.GridCells
 import androidx.compose.foundation.lazy.grid.LazyVerticalGrid
@@ -15,7 +19,18 @@ import com.aytbyz.enuygun.presentation.base.topbar.ENTopBarConfig
 import com.aytbyz.enuygun.presentation.components.product.ProductCard
 import com.aytbyz.enuygun.presentation.components.topbar.SearchFilterSortTopBar
 import androidx.compose.foundation.lazy.grid.items
+import androidx.compose.foundation.lazy.grid.rememberLazyGridState
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.Text
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.snapshotFlow
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
+import androidx.compose.ui.text.SpanStyle
+import androidx.compose.ui.text.buildAnnotatedString
+import androidx.compose.ui.text.font.FontWeight
+import androidx.compose.ui.text.withStyle
+import com.aytbyz.enuygun.presentation.R
 import com.aytbyz.enuygun.presentation.components.bottomsheet.ProductFilterBottomSheet
 import com.aytbyz.enuygun.presentation.home.intent.HomeIntent
 
@@ -25,6 +40,18 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val uiState = viewModel.uiState.collectAsState().value
+    val gridState = rememberLazyGridState()
+
+    LaunchedEffect(gridState) {
+        snapshotFlow { gridState.layoutInfo }
+            .collect { layoutInfo ->
+                val totalItems = layoutInfo.totalItemsCount
+                val lastVisibleItem = layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0
+                if (lastVisibleItem >= totalItems - 4 && uiState.canLoadMore && !uiState.isLoadingMore) {
+                    viewModel.fetchProducts(loadMore = true)
+                }
+            }
+    }
 
     if (uiState.showSortBottomSheet) {
         ProductFilterBottomSheet(
@@ -37,6 +64,7 @@ fun HomeScreen(
     }
 
     BaseScreen(
+        eventFlow = viewModel.eventFlow,
         topBarConfig = ENTopBarConfig(
             showBackButton = false,
             customTopBar = {
@@ -53,24 +81,53 @@ fun HomeScreen(
             onBackClick = {}
         )
     ) {
-        LazyVerticalGrid(
-            columns = GridCells.Fixed(2),
-            modifier = Modifier.background(Color.White)
-                .padding(horizontal = 4.dp),
-            contentPadding = PaddingValues(2.dp)
-        ) {
-            items(uiState.products) { product ->
-                ProductCard(
-                    product = product,
-                    modifier = Modifier.padding(2.dp),
-                    isFavorite = viewModel.isFavorite,
-                    onFavoriteClick = {
-                        viewModel.toggleFavorite()
+        Column(modifier = Modifier.fillMaxWidth()) {
+            Row(
+                modifier = Modifier
+                    .fillMaxWidth()
+                    .background(Color.White)
+                    .padding(horizontal = 14.dp, vertical = 12.dp),
+                horizontalArrangement = Arrangement.SpaceBetween
+            ) {
+                val fullText = stringResource(id = R.string.product_count_label, uiState.total)
+
+                Text(
+                    buildAnnotatedString {
+                        val boldPart = fullText.substringBefore(" ")
+                        val normalPart = fullText.removePrefix("$boldPart ")
+
+                        withStyle(style = SpanStyle(fontWeight = FontWeight.Bold)) {
+                            append("$boldPart ")
+                        }
+                        withStyle(style = SpanStyle(fontWeight = FontWeight.Normal)) {
+                            append(normalPart)
+                        }
                     },
-                    onClick = {
-                        goToProductDetail(product.id)
-                    }
+                    style = MaterialTheme.typography.titleMedium
                 )
+            }
+
+            LazyVerticalGrid(
+                columns = GridCells.Fixed(2),
+                state = gridState,
+                modifier = Modifier
+                    .background(Color.White)
+                    .padding(horizontal = 4.dp),
+                contentPadding = PaddingValues(2.dp)
+            ) {
+                items(uiState.products) { product ->
+                    ProductCard(
+                        product = product,
+                        modifier = Modifier.padding(2.dp),
+                        isFavorite = product.isFavorite,
+                        onFavoriteClick = {
+                            viewModel.onIntent(HomeIntent.OnFavoriteToggle(product))
+                        },
+                        onClick = {
+                            goToProductDetail(product.id)
+                        }
+                    )
+                }
             }
         }
     }

@@ -35,11 +35,4 @@ sealed class ENBottomNavItem(
         R.drawable.ic_shopping_cart_seleceted,
         R.string.nav_basket
     )
-
-    object Profile : ENBottomNavItem(
-        "profile",
-        R.drawable.ic_profile,
-        R.drawable.ic_profile_selected,
-        R.string.nav_profile
-    )
 }

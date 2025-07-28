@@ -39,20 +39,20 @@ fun CategoryItem(
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Image(
-            painter = painterResource(id = R.drawable.img_laptop),
+            painter = painterResource(id = R.drawable.img_category),
             contentDescription = "Laptop",
             modifier = Modifier
                 .fillMaxWidth()
-                .size(120.dp)
+                .size(50.dp)
                 .clip(RoundedCornerShape(12.dp)),
-            contentScale = ContentScale.Crop
+            contentScale = ContentScale.Fit
         )
 
         Spacer(modifier = Modifier.height(8.dp))
 
         Text(
             text = name,
-            style = MaterialTheme.typography.bodyMedium,
+            style = MaterialTheme.typography.titleSmall,
             fontWeight = FontWeight.Medium,
             textAlign = TextAlign.Center
         )

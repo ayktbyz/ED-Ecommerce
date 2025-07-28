@@ -13,6 +13,7 @@ import androidx.compose.material3.Card
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Text
+import androidx.compose.material3.Icon
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
@@ -30,6 +31,12 @@ import com.aytbyz.enuygun.presentation.theme.Gray100
 import com.aytbyz.enuygun.presentation.theme.Gray50
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.interaction.MutableInteractionSource
+import androidx.compose.foundation.layout.Arrangement
+import androidx.compose.foundation.layout.Row
+import androidx.compose.foundation.layout.size
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.Add
+import androidx.compose.material3.IconButton
 import androidx.compose.runtime.remember
 
 @Composable
@@ -38,7 +45,9 @@ fun ProductCard(
     modifier: Modifier = Modifier,
     isFavorite: Boolean = false,
     onFavoriteClick: () -> Unit = {},
-    onClick: () -> Unit = {}
+    onClick: () -> Unit = {},
+    isAddButton: Boolean = false,
+    onAddClick: () -> Unit = {}
 ) {
     Card(
         modifier = modifier
@@ -93,21 +102,49 @@ fun ProductCard(
 
             Spacer(modifier = Modifier.height(4.dp))
 
-            Column {
-                Text(
-                    text = "${product.discountPercentage} TL",
-                    style = MaterialTheme.typography.bodyLarge,
-                    color = Color.Black,
-                    fontWeight = FontWeight.Bold
-                )
+            Row(
+                verticalAlignment = Alignment.CenterVertically,
+                horizontalArrangement = Arrangement.SpaceBetween,
+                modifier = Modifier.fillMaxWidth()
+            ) {
+                val discountedPrice = product.price * (1 - product.discountPercentage / 100)
 
-                Spacer(modifier = Modifier.width(6.dp))
+                Column {
+                    Text(
+                        text = "%.2f TL".format(discountedPrice),
+                        style = MaterialTheme.typography.bodyLarge,
+                        color = Color.Black,
+                        fontWeight = FontWeight.Bold
+                    )
 
-                Text(
-                    text = "${product.price} TL",
-                    style = MaterialTheme.typography.bodySmall.copy(textDecoration = TextDecoration.LineThrough),
-                    color = Gray100
-                )
+                    Spacer(modifier = Modifier.height(2.dp))
+
+                    Text(
+                        text = "%.2f TL".format(product.price),
+                        style = MaterialTheme.typography.bodySmall.copy(
+                            textDecoration = TextDecoration.LineThrough
+                        ),
+                        color = Gray100
+                    )
+                }
+
+                if (isAddButton) {
+                    IconButton(
+                        onClick = onAddClick
+                    ) {
+                        Icon(
+                            imageVector = Icons.Default.Add,
+                            contentDescription = null,
+                            tint = Color.Black,
+                            modifier = Modifier
+                                .size(28.dp)
+                                .background(
+                                    color = Gray50,
+                                    shape = MaterialTheme.shapes.small
+                                )
+                        )
+                    }
+                }
             }
         }
     }

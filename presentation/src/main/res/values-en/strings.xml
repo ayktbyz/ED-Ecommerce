@@ -2,6 +2,9 @@
 <resources>
     <string name="placeholder_search">Search products</string>
     <string name="categories">Categories</string>
+    <string name="favorites">Favorites</string>
+    <string name="my_cart">My Cart</string>
+    <string name="profile">Profile</string>
 
     <string name="filter">Filter</string>
     <string name="price_low_to_high">Price (Low to High)</string>
@@ -13,5 +16,21 @@
     <string name="quantity">Quantity</string>
     <string name="add_to_cart">Add To Cart</string>
     <string name="price_unit">TL</string>
+
     <string name="added_to_cart">Product added to cart</string>
+    <string name="removed_from_favorites">Removed from favorites</string>
+    <string name="added_to_favorites">Added to favorites</string>
+
+    <string name="empty_favorite_list">Your favorite list is empty.</string>
+    <string name="empty_cart_list">Your cart list is empty.</string>
+
+    <string name="checkout_with_count">Checkout (%1$d)</string>
+
+    <string name="summary_subtotal">Subtotal</string>
+    <string name="summary_shipping">Shipping</string>
+    <string name="summary_total">Total</string>
+    <string name="price_with_currency">%.2f TL</string>
+    <string name="shipping_free">0.00 TL</string>
+
+    <string name="product_count_label">Products (Total %1$d items)</string>
 </resources>

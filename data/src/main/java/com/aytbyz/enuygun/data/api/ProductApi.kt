@@ -11,13 +11,17 @@ interface ProductApi {
     suspend fun searchProducts(
         @Query("q") query: String,
         @Query("sortBy") sortBy: String? = null,
-        @Query("order") order: String? = null
+        @Query("order") order: String? = null,
+        @Query("skip") skip: Int = 0,
+        @Query("limit") limit: Int = 30
     ): ProductResponseDto
 
     @GET("products")
     suspend fun getProducts(
         @Query("sortBy") sortBy: String? = null,
-        @Query("order") order: String? = null
+        @Query("order") order: String? = null,
+        @Query("skip") skip: Int = 0,
+        @Query("limit") limit: Int = 30
     ): ProductResponseDto
 
     @GET("products/{id}")
