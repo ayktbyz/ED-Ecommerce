@@ -42,13 +42,32 @@ fun HomeScreen(
     val uiState = viewModel.uiState.collectAsState().value
     val gridState = rememberLazyGridState()
 
-    LaunchedEffect(gridState) {
+    LaunchedEffect(Unit) {
+        snapshotFlow { gridState.isScrollInProgress }
+            .collect {
+                viewModel.refreshFavorites()
+            }
+    }
+
+    LaunchedEffect(uiState.products, uiState.isLoadingMore) {
         snapshotFlow { gridState.layoutInfo }
             .collect { layoutInfo ->
                 val totalItems = layoutInfo.totalItemsCount
                 val lastVisibleItem = layoutInfo.visibleItemsInfo.lastOrNull()?.index ?: 0
-                if (lastVisibleItem >= totalItems - 4 && uiState.canLoadMore && !uiState.isLoadingMore) {
-                    viewModel.fetchProducts(loadMore = true)
+
+                val viewportEnd = layoutInfo.viewportEndOffset
+                val lastItemBottom = layoutInfo.visibleItemsInfo.lastOrNull()?.offset?.y?.plus(
+                    layoutInfo.visibleItemsInfo.lastOrNull()?.size?.height ?: 0
+                ) ?: 0
+
+                val isScreenFilled = totalItems > 0 && lastItemBottom >= viewportEnd
+
+                if (!isScreenFilled && uiState.canLoadMore && !uiState.isLoadingMore) {
+                    viewModel.onIntent(HomeIntent.LoadMore)
+                }
+
+                else if (lastVisibleItem >= totalItems - 4 && uiState.canLoadMore && !uiState.isLoadingMore) {
+                    viewModel.onIntent(HomeIntent.LoadMore)
                 }
             }
     }

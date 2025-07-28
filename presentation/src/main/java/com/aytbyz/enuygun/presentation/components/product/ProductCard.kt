@@ -38,6 +38,8 @@ import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.IconButton
 import androidx.compose.runtime.remember
+import androidx.compose.ui.res.painterResource
+import com.aytbyz.enuygun.presentation.R
 
 @Composable
 fun ProductCard(
@@ -70,6 +72,7 @@ fun ProductCard(
                     model = product.thumbnail,
                     contentDescription = product.title,
                     contentScale = ContentScale.Crop,
+                    placeholder = painterResource(id = R.drawable.product_placeholder),
                     modifier = Modifier
                         .height(140.dp)
                         .fillMaxWidth()

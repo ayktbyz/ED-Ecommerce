@@ -43,7 +43,6 @@ class HomeViewModel @Inject constructor(
         val state = _uiState.value
 
         if (state.isLoadingMore || (!state.canLoadMore && loadMore)) {
-            println("🟡 Yükleme engellendi - isLoadingMore=${state.isLoadingMore}, canLoadMore=${state.canLoadMore}, loadMore=$loadMore")
             return
         }
 
@@ -52,9 +51,6 @@ class HomeViewModel @Inject constructor(
 
             val skip = if (loadMore) state.currentSkip + state.limit else 0
             val limit = state.limit
-
-            println("➡️ fetchProducts çağrıldı → loadMore=$loadMore, skip=$skip, limit=$limit")
-
 
             getProducts(
                 query = state.searchQuery,
@@ -67,7 +63,6 @@ class HomeViewModel @Inject constructor(
                 val updatedProducts = page.products.map { product ->
                     product.copy(isFavorite = favoriteList.any { it.id == product.id })
                 }
-                println("✅ Ürünler yüklendi → toplam: ${page.total}, gelen: ${page.products.size}, yeni skip: $skip")
 
                 _uiState.update {
                     it.copy(
@@ -107,6 +102,19 @@ class HomeViewModel @Inject constructor(
                     products = currentState.products.map {
                         if (it.id == product.id) it.copy(isFavorite = !isFav) else it
                     })
+            }
+        }
+    }
+
+    fun refreshFavorites() {
+        viewModelScope.launch {
+            val favorites = getAllFavoritesUseCase().first()
+            _uiState.update { state ->
+                state.copy(
+                    products = state.products.map { product ->
+                        product.copy(isFavorite = favorites.any { it.id == product.id })
+                    }
+                )
             }
         }
     }

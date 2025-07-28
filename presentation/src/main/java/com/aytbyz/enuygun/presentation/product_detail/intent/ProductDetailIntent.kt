@@ -5,4 +5,5 @@ sealed class ProductDetailIntent {
     object DecreaseQuantity : ProductDetailIntent()
 
     object AddToCart : ProductDetailIntent()
+    object ToggleFavorite : ProductDetailIntent()
 }

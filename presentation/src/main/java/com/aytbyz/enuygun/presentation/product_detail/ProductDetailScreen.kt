@@ -43,6 +43,7 @@ import com.aytbyz.enuygun.presentation.theme.Green50
 import com.aytbyz.enuygun.presentation.theme.PrimaryBlack
 import androidx.compose.ui.res.stringResource
 import com.aytbyz.enuygun.presentation.R
+import com.aytbyz.enuygun.presentation.components.favorite.FavoriteIcon
 import com.aytbyz.enuygun.presentation.components.ratingbar.RatingBarView
 import com.aytbyz.enuygun.presentation.components.slider.ImageSlider
 import com.aytbyz.enuygun.presentation.product_detail.intent.ProductDetailIntent
@@ -66,6 +67,7 @@ fun ProductDetailScreen(
     }
 
     BaseScreen(
+        eventFlow = viewModel.eventFlow,
         isLoading = state.isLoading,
         topBarConfig = ENTopBarConfig(
             isVisible = false
@@ -86,12 +88,24 @@ fun ProductDetailScreen(
                         .padding(8.dp),
                     horizontalArrangement = Arrangement.SpaceBetween
                 ) {
+                    val isFavorite = if(state.product == null) false else state.product.isFavorite
+
                     IconButton(onClick = { onBackClick() }) {
                         Icon(Icons.Default.ArrowBack, contentDescription = null)
                     }
 
-                    IconButton(onClick = { /* handle favorite */ }) {
-                        Icon(Icons.Default.FavoriteBorder, contentDescription = null)
+                    Box(
+                        modifier = Modifier
+                            .fillMaxWidth()
+                            .padding(6.dp),
+                        contentAlignment = Alignment.TopEnd
+                    ) {
+                        FavoriteIcon(
+                            isFavorite = isFavorite,
+                            onClick = {
+                                viewModel.onIntent(ProductDetailIntent.ToggleFavorite)
+                            }
+                        )
                     }
                 }
             }
