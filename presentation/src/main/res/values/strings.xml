@@ -5,7 +5,8 @@
     <string name="favorites">Favoriler</string>
     <string name="my_cart">Sepetim</string>
     <string name="profile">Profilim</string>
-
+    <string name="payment">Ödeme Bilgileri</string>
+    <string name="pay">Öde</string>
 
     <string name="filter">Filtrele</string>
     <string name="price_low_to_high">Fiyat (Artan)</string>
@@ -34,4 +35,12 @@
     <string name="shipping_free">0,00 TL</string>
 
     <string name="product_count_label">Ürünler (Toplam %1$d adet)</string>
+
+    <string name="payment_success">Ödeme Başarılı</string>
+    <string name="payment_success_message">Ödemeniz başarıyla tamamlandı!</string>
+    <string name="go_home">Ana Sayfaya Dön</string>
+
+    <string name="error_full_name_required">Lütfen ad soyad girin</string>
+    <string name="error_invalid_email">Geçerli bir email adresi girin</string>
+    <string name="error_invalid_phone">Telefon numarası en az 10 haneli olmalı</string>
 </resources>

@@ -43,7 +43,8 @@ class FavoriteListViewModel @Inject constructor(
 
     private fun addToCart(product: Product) {
         viewModelScope.launch {
-            addToCartLocalUseCase(product)
+            val updatedProduct = product.copy(quantity = 1)
+            addToCartLocalUseCase(updatedProduct)
             sendUiEvent(
                 BaseUIEvent.ShowToast(
                     context.getString(R.string.added_to_cart)

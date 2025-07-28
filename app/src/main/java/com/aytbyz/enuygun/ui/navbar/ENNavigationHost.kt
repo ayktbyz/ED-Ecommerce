@@ -10,6 +10,8 @@ import com.aytbyz.enuygun.presentation.cart.CartScreen
 import com.aytbyz.enuygun.presentation.categories.CategoriesScreen
 import com.aytbyz.enuygun.presentation.favorite.FavoriteListScreen
 import com.aytbyz.enuygun.presentation.home.HomeScreen
+import com.aytbyz.enuygun.presentation.payment.PaymentScreen
+import com.aytbyz.enuygun.presentation.payment.PaymentSuccessScreen
 import com.aytbyz.enuygun.presentation.product_detail.ProductDetailScreen
 
 @Composable
@@ -29,7 +31,23 @@ fun ENNavigationHost(navController: NavHostController) {
             FavoriteListScreen()
         }
         composable(ENBottomNavItem.Basket.route) {
-            CartScreen()
+            CartScreen(goToPaymentScreen = {
+                navController.navigate(ENScreenRoutes.PAYMENT)
+            })
+        }
+        composable(ENScreenRoutes.PAYMENT) {
+            PaymentScreen(onBackClick = {
+                navController.popBackStack()
+            }, onGoPaymentSuccess = {
+                navController.navigate(ENScreenRoutes.PAYMENT_SUCCESS)
+            })
+        }
+        composable(ENScreenRoutes.PAYMENT_SUCCESS) {
+            PaymentSuccessScreen(
+                onGoHome = {
+                    navController.popBackStack(ENBottomNavItem.Home.route, inclusive = false)
+                }
+            )
         }
 
         composable(

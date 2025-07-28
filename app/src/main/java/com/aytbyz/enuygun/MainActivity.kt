@@ -15,6 +15,9 @@ import androidx.compose.runtime.getValue
 import com.aytbyz.enuygun.ui.navbar.EnuygunBottomBar
 import com.aytbyz.enuygun.ui.navbar.ENBottomNavItem
 import com.aytbyz.enuygun.ui.navbar.ENNavigationHost
+import com.aytbyz.enuygun.ui.navbar.ENScreenRoutes
+import com.aytbyz.enuygun.ui.navbar.ENScreenRoutes.PAYMENT
+import com.aytbyz.enuygun.ui.navbar.ENScreenRoutes.PAYMENT_SUCCESS
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -39,20 +42,22 @@ fun ENApp() {
 
     Scaffold(
         bottomBar = {
-            EnuygunBottomBar(
-                selectedRoute = currentRoute,
-                onItemSelected = { route ->
-                    if (route != currentRoute) {
-                        navController.navigate(route) {
-                            popUpTo(navController.graph.startDestinationId) {
-                                saveState = true
+            if (currentRoute !in listOf(PAYMENT, PAYMENT_SUCCESS)) {
+                EnuygunBottomBar(
+                    selectedRoute = currentRoute,
+                    onItemSelected = { route ->
+                        if (route != currentRoute) {
+                            navController.navigate(route) {
+                                popUpTo(navController.graph.startDestinationId) {
+                                    saveState = true
+                                }
+                                launchSingleTop = true
+                                restoreState = true
                             }
-                            launchSingleTop = true
-                            restoreState = true
                         }
                     }
-                }
-            )
+                )
+            }
         }
     ) { innerPadding ->
         Box(modifier = Modifier.padding(innerPadding)) {

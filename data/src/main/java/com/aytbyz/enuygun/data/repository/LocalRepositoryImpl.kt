@@ -48,4 +48,8 @@ class LocalRepositoryImpl @Inject constructor(
         dao.getAllFavorites().map { it.map { it.toDomain() } }
 
     override suspend fun isFavorite(id: Int): Boolean = dao.isFavorite(id)
+
+    override suspend fun clearCart() {
+        dao.clearCart()
+    }
 }

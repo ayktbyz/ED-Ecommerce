@@ -25,7 +25,8 @@ import com.aytbyz.enuygun.presentation.components.cart.CartItemRow
 
 @Composable
 fun CartScreen(
-    viewModel: CartViewModel = hiltViewModel()
+    viewModel: CartViewModel = hiltViewModel(),
+    goToPaymentScreen: () -> Unit,
 ) {
     val cartItems = viewModel.cartItems.collectAsState(initial = emptyList()).value
     val total = cartItems.sumOf { it.price * it.quantity }
@@ -68,7 +69,9 @@ fun CartScreen(
                 OrderSummary(totalAmount = total)
 
                 Button(
-                    onClick = {},
+                    onClick = {
+                        goToPaymentScreen()
+                    },
                     modifier = Modifier
                         .fillMaxWidth()
                         .padding(vertical = 12.dp),

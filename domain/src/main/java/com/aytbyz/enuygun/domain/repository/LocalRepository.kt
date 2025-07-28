@@ -14,4 +14,5 @@ interface LocalRepository {
     suspend fun removeFavorite(product: Product)
     fun getAllFavorites(): Flow<List<Product>>
     suspend fun isFavorite(id: Int): Boolean
+    suspend fun clearCart()
 }
