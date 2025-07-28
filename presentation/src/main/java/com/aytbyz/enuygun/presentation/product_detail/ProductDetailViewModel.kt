@@ -4,7 +4,7 @@ import android.content.Context
 import androidx.lifecycle.SavedStateHandle
 import androidx.lifecycle.viewModelScope
 import com.aytbyz.enuygun.domain.model.request.AddToCartRequest
-import com.aytbyz.enuygun.domain.model.request.CartProduct
+import com.aytbyz.enuygun.domain.model.request.CartProductRequest
 import com.aytbyz.enuygun.domain.model.response.Product
 import com.aytbyz.enuygun.domain.usecase.AddFavoriteUseCase
 import com.aytbyz.enuygun.domain.usecase.AddToCartLocalUseCase
@@ -82,7 +82,7 @@ class ProductDetailViewModel @Inject constructor(
                     AddToCartRequest(
                         userId = 125,
                         products = listOf(
-                            CartProduct(
+                            CartProductRequest(
                                 id = state.value.product?.id ?: 0,
                                 quantity = state.value.quantity
                             )

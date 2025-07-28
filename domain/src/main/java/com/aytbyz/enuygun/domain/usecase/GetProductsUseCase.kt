@@ -1,8 +1,6 @@
 package com.aytbyz.enuygun.domain.usecase
 
 import com.aytbyz.enuygun.domain.model.ProductPage
-import com.aytbyz.enuygun.domain.model.response.Product
-import com.aytbyz.enuygun.domain.model.response.ProductListResponse
 import com.aytbyz.enuygun.domain.repository.ProductRepository
 import kotlinx.coroutines.flow.Flow
 import javax.inject.Inject
