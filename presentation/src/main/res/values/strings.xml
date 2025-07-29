@@ -9,6 +9,7 @@
     <string name="pay">Öde</string>
 
     <string name="filter">Filtrele</string>
+    <string name="sort">Sırala</string>
     <string name="price_low_to_high">Fiyat (Artan)</string>
     <string name="price_high_to_low">Fiyat (Azalan)</string>
     <string name="a_to_z">A–Z</string>
@@ -43,4 +44,10 @@
     <string name="error_full_name_required">Lütfen ad soyad girin</string>
     <string name="error_invalid_email">Geçerli bir email adresi girin</string>
     <string name="error_invalid_phone">Telefon numarası en az 10 haneli olmalı</string>
+
+    <string name="price_range_label">Fiyat Aralığı: %1$s - %2$s</string>
+    <string name="min_rating_label">Minimum Puan: %1$s</string>
+    <string name="only_favorites_label">Sadece Favoriler</string>
+    <string name="clear_button">Temizle</string>
+    <string name="apply_filter_button">Filtrele</string>
 </resources>

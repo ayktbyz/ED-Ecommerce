@@ -32,6 +32,7 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.withStyle
 import com.aytbyz.enuygun.presentation.R
 import com.aytbyz.enuygun.presentation.components.bottomsheet.ProductFilterBottomSheet
+import com.aytbyz.enuygun.presentation.components.bottomsheet.ProductSortBottomSheet
 import com.aytbyz.enuygun.presentation.home.intent.HomeIntent
 
 @Composable
@@ -40,6 +41,8 @@ fun HomeScreen(
     viewModel: HomeViewModel = hiltViewModel()
 ) {
     val uiState = viewModel.uiState.collectAsState().value
+    val filterState = viewModel.filter.collectAsState().value
+
     val gridState = rememberLazyGridState()
 
     LaunchedEffect(Unit) {
@@ -72,13 +75,30 @@ fun HomeScreen(
             }
     }
 
-    if (uiState.showSortBottomSheet) {
+    if (uiState.showFilterBottomSheet) {
         ProductFilterBottomSheet(
+            filterState = filterState,
+            onApply = {
+                viewModel.onIntent(HomeIntent.OnApplyFilter(it))
+            },
+            onClear = {
+                viewModel.onIntent(HomeIntent.OnClearFilter)
+            },
+            onDismiss = {
+                viewModel.onIntent(HomeIntent.OnDismissFilterBottomSheet)
+            }
+        )
+    }
+
+    if (uiState.showSortBottomSheet) {
+        ProductSortBottomSheet(
             selected = uiState.selectedSortOption,
             onSelect = {
                 viewModel.onIntent(HomeIntent.OnSortSelected(it))
             },
-            onDismiss = { viewModel.dismissSortBottomSheet() }
+            onDismiss = {
+                viewModel.onIntent(HomeIntent.OnDismissSortBottomSheet)
+            }
         )
     }
 
@@ -94,6 +114,9 @@ fun HomeScreen(
                     },
                     onSortClick = {
                         viewModel.onIntent(HomeIntent.OnSortClick)
+                    },
+                    onFilterClick = {
+                        viewModel.onIntent(HomeIntent.OnFilterClick)
                     }
                 )
             },

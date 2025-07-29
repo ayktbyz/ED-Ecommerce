@@ -16,8 +16,9 @@ import com.aytbyz.enuygun.presentation.components.text.CustomTextInput
 fun SearchFilterSortTopBar(
     searchQuery: String? = null,
     onSearchChange: (String) -> Unit,
-    onSortClick: () -> Unit
-) {
+    onSortClick: () -> Unit,
+    onFilterClick: () -> Unit
+    ) {
     Surface(
         color = Color.White,
         shadowElevation = 4.dp
@@ -39,6 +40,18 @@ fun SearchFilterSortTopBar(
             )
 
             Spacer(modifier = Modifier.width(12.dp))
+
+            IconButton(
+                onClick = onFilterClick,
+                modifier = Modifier.size(30.dp)
+            ) {
+                Icon(
+                    painter = painterResource(id = R.drawable.ic_filter),
+                    contentDescription = "filter"
+                )
+            }
+
+            Spacer(modifier = Modifier.width(6.dp))
 
             Row(
                 horizontalArrangement = Arrangement.spacedBy(8.dp),

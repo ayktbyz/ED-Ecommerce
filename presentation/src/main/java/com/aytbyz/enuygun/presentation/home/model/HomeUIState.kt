@@ -8,6 +8,7 @@ data class HomeUIState(
     val searchQuery: String? = null,
     val products: List<Product> = emptyList(),
     val showSortBottomSheet: Boolean = false,
+    val showFilterBottomSheet: Boolean = false,
     val selectedSortOption: FilterSortingOptions? = null,
     val canLoadMore: Boolean = true,
     val isLoadingMore: Boolean = false,

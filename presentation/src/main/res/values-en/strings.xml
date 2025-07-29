@@ -9,6 +9,7 @@
     <string name="pay">Pay</string>
 
     <string name="filter">Filter</string>
+    <string name="sort">Sort</string>
     <string name="price_low_to_high">Price (Low to High)</string>
     <string name="price_high_to_low">Price (High to Low)</string>
     <string name="a_to_z">A–Z</string>
@@ -43,4 +44,10 @@
     <string name="error_full_name_required">Please enter your full name</string>
     <string name="error_invalid_email">Please enter a valid email address</string>
     <string name="error_invalid_phone">Phone number must be at least 10 digits</string>
+
+    <string name="price_range_label">Price Range: %1$s - %2$s</string>
+    <string name="min_rating_label">Minimum Rating: %1$s</string>
+    <string name="only_favorites_label">Only Favorites</string>
+    <string name="clear_button">Clear</string>
+    <string name="apply_filter_button">Apply Filter</string>
 </resources>

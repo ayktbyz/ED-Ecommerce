@@ -11,6 +11,7 @@ import com.aytbyz.enuygun.domain.usecase.RemoveFavoriteUseCase
 import com.aytbyz.enuygun.presentation.R
 import com.aytbyz.enuygun.presentation.base.screen.BaseViewModel
 import com.aytbyz.enuygun.presentation.base.screen.model.BaseUIEvent
+import com.aytbyz.enuygun.presentation.components.bottomsheet.model.ProductFilterUIModel
 import com.aytbyz.enuygun.presentation.home.intent.HomeIntent
 import com.aytbyz.enuygun.presentation.home.model.HomeUIState
 import dagger.hilt.android.lifecycle.HiltViewModel
@@ -34,6 +35,9 @@ class HomeViewModel @Inject constructor(
 ) : BaseViewModel() {
     private val _uiState = MutableStateFlow(HomeUIState())
     val uiState: StateFlow<HomeUIState> = _uiState
+
+    private val _filter = MutableStateFlow(ProductFilterUIModel())
+    val filter: StateFlow<ProductFilterUIModel> = _filter
 
     init {
         fetchProducts()
@@ -60,13 +64,24 @@ class HomeViewModel @Inject constructor(
                 limit = limit
             ).collectLatest { page ->
                 val favoriteList = getAllFavoritesUseCase().first()
-                val updatedProducts = page.products.map { product ->
+
+                val productsWithFavoriteFlag = page.products.map { product ->
                     product.copy(isFavorite = favoriteList.any { it.id == product.id })
+                }
+
+                val mergedAllProducts: List<Product> =
+                    if (loadMore) _uiState.value.products + productsWithFavoriteFlag
+                    else productsWithFavoriteFlag
+
+                val finalVisibleProducts = if (isFilterActive()) {
+                    applyLocalFilter(mergedAllProducts)
+                } else {
+                    mergedAllProducts
                 }
 
                 _uiState.update {
                     it.copy(
-                        products = if (loadMore) it.products + updatedProducts else updatedProducts,
+                        products = finalVisibleProducts,
                         total = page.total,
                         isLoadingMore = false,
                         canLoadMore = skip + limit < page.total,
@@ -119,10 +134,49 @@ class HomeViewModel @Inject constructor(
         }
     }
 
+    fun setFilter(filter: ProductFilterUIModel) {
+        _filter.value = filter
+        _uiState.update { it.copy(products = applyLocalFilter(it.products)) }
+    }
+
+    fun clearFilter() {
+        _filter.value = ProductFilterUIModel()
+        fetchProducts()
+    }
+
+    fun dismissSortBottomSheet() {
+        _uiState.value = _uiState.value.copy(showSortBottomSheet = false)
+    }
+
+    fun dismissFilterBottomSheet() {
+        _uiState.value = _uiState.value.copy(showFilterBottomSheet = false)
+    }
+
+    private fun applyLocalFilter(allProducts: List<Product>): List<Product> {
+        val f = _filter.value
+        return allProducts.filter {
+            it.price.toFloat() in f.selectedPriceRange &&
+                    it.rating >= f.minRating &&
+                    (!f.onlyFavorites || it.isFavorite)
+        }
+    }
+
+    private fun isFilterActive(): Boolean {
+        val filter = _filter.value
+        return filter.selectedPriceRange.start > filter.minPrice ||
+                filter.selectedPriceRange.endInclusive < filter.maxPrice ||
+                filter.minRating > 0f ||
+                filter.onlyFavorites
+    }
+
     fun onIntent(intent: HomeIntent) {
         when (intent) {
             is HomeIntent.OnSortClick -> {
                 _uiState.value = _uiState.value.copy(showSortBottomSheet = true)
+            }
+
+            is HomeIntent.OnFilterClick -> {
+                _uiState.value = _uiState.value.copy(showFilterBottomSheet = true)
             }
 
             is HomeIntent.OnSearchChange -> {
@@ -146,10 +200,24 @@ class HomeViewModel @Inject constructor(
             is HomeIntent.LoadMore -> {
                 fetchProducts(loadMore = true)
             }
-        }
-    }
 
-    fun dismissSortBottomSheet() {
-        _uiState.value = _uiState.value.copy(showSortBottomSheet = false)
+            is HomeIntent.OnApplyFilter -> {
+                setFilter(intent.filter)
+                dismissFilterBottomSheet()
+            }
+
+            is HomeIntent.OnClearFilter -> {
+                clearFilter()
+                dismissFilterBottomSheet()
+            }
+
+            is HomeIntent.OnDismissFilterBottomSheet -> {
+                dismissFilterBottomSheet()
+            }
+
+            is HomeIntent.OnDismissSortBottomSheet -> {
+                dismissSortBottomSheet()
+            }
+        }
     }
 }
