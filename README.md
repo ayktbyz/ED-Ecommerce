@@ -94,12 +94,17 @@ Run all tests with:
 
 Here are some screenshots from the application:
 
-![Home](https://i.hizliresim.com/n7w0flw.png)
-![Favorites](https://i.hizliresim.com/kihs4h5.png)
-![Cart](https://i.hizliresim.com/sxgez98.png)
-![Product Detail](https://i.hizliresim.com/96xkk4u.png)
-![Checkout Detail](https://i.hizliresim.com/7sxj95z.png)
-![Checkout](https://i.hizliresim.com/qotfkrg.png)
+<p align="center">
+  <img src="https://i.hizliresim.com/n7w0flw.png" alt="Home" width="250"/>
+  <img src="https://i.hizliresim.com/kihs4h5.png" alt="Favorites" width="250"/>
+  <img src="https://i.hizliresim.com/sxgez98.png" alt="Cart" width="250"/>
+</p>
+
+<p align="center">
+  <img src="https://i.hizliresim.com/96xkk4u.png" alt="Product Detail" width="250"/>
+  <img src="https://i.hizliresim.com/7sxj95z.png" alt="Checkout Detail" width="250"/>
+  <img src="https://i.hizliresim.com/qotfkrg.png" alt="Checkout" width="250"/>
+</p>
 
 ---
 
