@@ -1,4 +1,4 @@
-# Enuygun Android MVVM Project
+# Android MVVM Project
 
 This project is a modular Android application developed using the MVVM architecture. It provides a sample shopping experience with a clean separation of concerns and modern Android development practices.
 
