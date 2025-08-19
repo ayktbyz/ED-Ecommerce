@@ -90,6 +90,17 @@ Run all tests with:
 4. Run the app using the `Run` button or via terminal:  
    `./gradlew assembleDebug`
 
+   ## Screenshots
+
+Here are some screenshots from the application:
+
+![Home](https://i.hizliresim.com/n7w0flw.png)
+![Favorites](https://i.hizliresim.com/kihs4h5.png)
+![Cart](https://i.hizliresim.com/sxgez98.png)
+![Product Detail](https://i.hizliresim.com/96xkk4u.png)
+![Checkout Detail](https://i.hizliresim.com/7sxj95z.png)
+![Checkout](https://i.hizliresim.com/qotfkrg.png)
+
 ---
 
 For more details, please review the code and
